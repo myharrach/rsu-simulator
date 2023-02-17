@@ -1,0 +1,29 @@
+<ul class="list-group">
+  <div>
+    <h6 class="p-2  ">أقطن بـِــــ</h6>
+  </div>
+</ul>
+<ul class="list-group">
+  <li routerLink="/urban"  [className]="router.url === '/urban'?'list-group-item list-group-item-action highlight-urban d-flex gap-3 py-3':'list-group-item list-group-item-action d-flex gap-3 py-3'" style="cursor: pointer"
+
+      aria-current="true">
+    <img src="/assets/images/city.png" alt="city" width="32" height="32" class="rounded-circle flex-shrink-0">
+    <div class="d-flex gap-2 w-100 justify-content-between">
+
+      <h6 class="mb-0 ">المجال الحضري</h6>
+
+    </div>
+  </li>
+  <li routerLink="/rural" [className]="router.url === '/rural'?'list-group-item list-group-item-action d-flex gap-3 py-3 highlight-rural ':'list-group-item list-group-item-action d-flex gap-3 py-3'" style="cursor: pointer"
+
+      aria-current="true">
+    <img src="/assets/images/field.jpg" alt="farm" width="32" height="32" class="rounded-circle flex-shrink-0">
+    <div class="d-flex gap-2 w-100 justify-content-between">
+
+      <h6 class="mb-0">المجال القروي </h6>
+
+    </div>
+  </li>
+
+
+</ul>

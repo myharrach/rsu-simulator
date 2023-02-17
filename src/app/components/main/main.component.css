@@ -1,0 +1,42 @@
+.main{
+  background-color: white;
+  border-radius: 13px;
+
+  /*padding-right: 2px;*/
+}
+
+.main-words{
+
+   background-color: ghostwhite;
+  color:   #0a2f66;
+  font-weight: bold;
+
+  margin: auto;
+  width:auto;
+
+  margin-top: 10px;
+  padding: 3px;
+  padding-bottom: 9px;
+
+  text-align: center;
+
+}
+
+.main-source{
+
+  background-color: #f1ba3f;
+  color:   #0a2f66;
+  border-radius: 8px;
+  font-weight: bold;
+
+  margin: auto;
+  width: 100%;
+
+  margin-top: 10px;
+  padding: 3px;
+  padding-bottom: 9px;
+
+  text-align: center;
+
+}
+

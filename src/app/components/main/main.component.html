@@ -1,173 +1,34 @@
-<div class="row mt-4">
-  <div class="col-md-2">
-    <ul class="list-group">
-      <li style="cursor: pointer"
+<div class="px-4 pt-4 py-2 my-0 text-center border-bottom main-words" *ngIf="router.url === '/'">
+  <h4 class="display-6 fw-bold" style="text-decoration: underline;">مماثلة إحتساب مؤشر الأسرة الخاص بـِـــ rsu </h4>
+  <div class="col-lg-6 mx-auto" style="display:inline;">
+    <p class="lead mb-4 pt-2"   style="font-weight: bold;"> مرحبا بكم في مماثلة إحتساب نتيجة مؤشر الأسرة أو مجموع النقاط الخاصة بالدعم الإجتماعي للسجل الإجتماعي الموحد rsu.
 
-          class="list-group-item">
-        hi
-      </li>
-      <li style="cursor: pointer"
-
-          class="list-group-item">
-        hi
-      </li>
-    </ul>
-    <ul class="list-group">
-      <li href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-        <img src="" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
-        <div class="d-flex gap-2 w-100 justify-content-between">
-          <div>
-            <h6 class="mb-0">List group</h6>
-            <p class="mb-0 opacity-75">Some p</p>
-          </div>
-        </div>
-      </li>
-      <li href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-        <img src="" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
-        <div class="d-flex gap-2 w-100 justify-content-between">
-          <div>
-            <h6 class="mb-0">Another </h6>
-            <p class="mb-0 opacity-75">Some ittle longer.</p>
-          </div>
-        </div>
-      </li>
-      <li href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-        <img src="" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
-        <div class="d-flex gap-2 w-100 justify-content-between">
-          <div>
-            <h6 class="mb-0">Third heading</h6>
-            <p class="mb-0 opacity-75">Some .</p>
-          </div>
-        </div>
-      </li>
-    </ul>
+      <br> للبدأ المرجو إختيار نوع مجال السكن عبر الإختيار الجانبي.</p>
 
   </div>
 
-  <div class="col-md-9">
-    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
+</div>
 
-    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
+<div class="row mt-3 ms-0 mb-4 ">
+  <div class="col-md-3  col-sm-5  mb-3 ">
 
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon1">@</span>
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-             aria-describedby="basic-addon1">
+    <app-type-zone></app-type-zone>
+
+
+  </div>
+
+  <div class="col-md-8 mt-4 main">
+
+
+    <div *ngIf="router.url === '/'">
+
+      <p class="lead my-5 main-source"> كل المعلومات المستخدة هي الموجودة في مرسوم الجريدة الرسمية عدد 7011, من 29
+        ذوالحجة 1442 (9أغسطس 2021) صفحات 6001-6008 </p>
+
+
     </div>
-
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-             aria-describedby="basic-addon2">
-      <span class="input-group-text" id="basic-addon2">@example.com</span>
-    </div>
-
-    <div class="mb-3">
-      <label for="basic-url" class="form-label">Your vanity URL</label>
-      <div class="input-group">
-        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-      </div>
-      <div class="form-text">Example help text goes outside the input group.</div>
-    </div>
-
-    <div class="input-group mb-3">
-      <span class="input-group-text">$</span>
-      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-      <span class="input-group-text">.00</span>
-    </div>
-
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-      <span class="input-group-text">@</span>
-      <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-    </div>
-
-    <div class="input-group">
-      <span class="input-group-text">With textarea</span>
-      <textarea class="form-control" aria-label="With textarea"></textarea>
-    </div>
+    <router-outlet></router-outlet>
 
 
-    <div class="input-group">
-      <span class="input-group-text">First and last name</span>
-      <input type="text" aria-label="First name" class="form-control">
-      <input type="text" aria-label="Last name" class="form-control">
-    </div>
-
-    <form class="row g-3 needs-validation" novalidate>
-      <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">First name</label>
-        <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>
-      <div class="col-md-4">
-        <label for="validationCustom02" class="form-label">Last name</label>
-        <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>
-      <div class="col-md-4">
-        <label for="validationCustomUsername" class="form-label">Username</label>
-        <div class="input-group has-validation">
-          <span class="input-group-text" id="inputGroupPrepend">@</span>
-          <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-                 required>
-          <div class="invalid-feedback">
-            Please choose a username.
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <label for="validationCustom03" class="form-label">City</label>
-        <input type="text" class="form-control" id="validationCustom03" required>
-        <div class="invalid-feedback">
-          Please provide a valid city.
-        </div>
-      </div>
-      <div class="col-md-3">
-        <label for="validationCustom04" class="form-label">State</label>
-        <select class="form-select" id="validationCustom04" required>
-          <option selected disabled value="">Choose...</option>
-          <option>...</option>
-        </select>
-        <div class="invalid-feedback">
-          Please select a valid state.
-        </div>
-      </div>
-      <div class="col-md-3">
-        <label for="validationCustom05" class="form-label">Zip</label>
-        <input type="text" class="form-control" id="validationCustom05" required>
-        <div class="invalid-feedback">
-          Please provide a valid zip.
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-          <label class="form-check-label" for="invalidCheck">
-            Agree to terms and conditions
-          </label>
-          <div class="invalid-feedback">
-            You must agree before submitting.
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <button class="btn btn-primary" type="submit">Submit form</button>
-      </div>
-    </form>
   </div>
 </div>
