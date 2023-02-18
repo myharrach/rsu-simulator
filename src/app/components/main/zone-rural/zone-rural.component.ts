@@ -61,7 +61,7 @@ export class ZoneRuralComponent implements OnInit {
     }
   ];
 
-  kmUrban = 9.825;
+  kmRural = 8.695;
   kzg = 0;
 
   score = 0;
@@ -86,7 +86,7 @@ export class ZoneRuralComponent implements OnInit {
     for (let i = 0; i < 35; i++) {
       sigma = sigma + (+this.varAll[i]);
     }
-    this.score = sigma + this.kmUrban + this.kzg;
+    this.score = sigma + this.kmRural + this.kzg;
 
     // this.score = sigma;
   }
