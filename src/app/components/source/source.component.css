@@ -1,0 +1,22 @@
+.main-words{
+
+  background-color: ghostwhite;
+  color:   #0a2f66;
+  font-weight: bold;
+
+  margin: auto;
+  width:83%;
+
+  margin-top: 10px;
+  padding: 3px;
+  padding-bottom: 9px;
+
+  text-align: center;
+
+}
+
+.disabled-link{
+  cursor: pointer;
+  text-decoration: underline;
+  color: #0a2f66;
+}

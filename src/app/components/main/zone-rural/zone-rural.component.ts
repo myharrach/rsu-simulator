@@ -99,8 +99,15 @@ export class ZoneRuralComponent implements OnInit {
     this.step += 1;
   }
 
-  SelectV1OrV2(event: any) {
+  SelectV1(event: any) {
 
+    this.varSelect = event.target.value;
+
+    this.varAll[0] = this.varSelect;
+
+    this.varSelect = 0;
+  }
+  SelectV2(event: any) {
     this.varSelect = event.target.value;
 
     this.varAll[1] = this.varSelect;
@@ -109,20 +116,8 @@ export class ZoneRuralComponent implements OnInit {
   }
 
   SelectV3Cas1(event: any) {
-    // this.V3 = event.target.value;
-    //
-    // if (this.V3 == 0) {
-    //   this.varAll[2] = 0;
-    // } else if (this.V3 == 1) {
-    //
-    //   this.varAll[2] = 0.0475;
-    // } else if (this.V3 == 2) {
-    //   this.varAll[2] = this.nbrV3 * 0.0475;
-    // }
+    this.V3 = event.target.value;
 
-    this.varSelect = event.target.value;
-
-    this.varAll[2] = this.varSelect;
 
     this.varSelect = 0;
   }
@@ -131,11 +126,12 @@ export class ZoneRuralComponent implements OnInit {
     this.nbrV3 = event.target.value;
 
     if (this.V3 == 1) {
-      this.varAll[2] = 0.0475;
+      this.varAll[2] = 0.129;
     } else if (this.V3 == 2) {
-      this.varAll[2] = this.nbrV3 * 0.0475;
+      this.varAll[2] = this.nbrV3 * 0.108;
     }
   }
+
 
   SelectV4(event: any) {
     this.varSelect = event.target.value;
@@ -209,154 +205,100 @@ export class ZoneRuralComponent implements OnInit {
     this.varSelect = 0;
   }
 
-  SelectV13(event: any) {
-    this.varSelect = event.target.value;
 
-    this.varAll[12] = this.varSelect;
 
-    this.varSelect = 0;
-  }
 
-  SelectV14(event: any) {
-    this.varSelect = event.target.value;
-
-    this.varAll[13] = this.varSelect;
-
-    this.varSelect = 0;
-  }
-
-  SelectV15(event: any) {
-    this.varSelect = event.target.value;
-
-    this.varAll[14] = this.varSelect;
-
-    this.varSelect = 0;
-  }
-
-  SelectV16(event: any) {
-    this.varSelect = event.target.value;
-
-    this.varAll[15] = this.varSelect;
-
-    this.varSelect = 0;
-  }
 
   SelectP2V1(event: any) {
     this.nbrFamille = event.target.value;
-    let res = (-0.177) * this.nbrFamille + 0.00533 * Math.pow(this.nbrFamille, 2);
+    let res = (-0.138) * this.nbrFamille + 0.00469 * Math.pow(this.nbrFamille, 2);
 
-    this.varAll[16] = res;
+    this.varAll[12] = res;
   }
 
-  SelectP2V2(event: any) {
+  SelectP2V21(event: any) {
     this.varSelect = event.target.value;
-    let res = (-0.0104) * this.varSelect + 0.0000771 * Math.pow(this.varSelect, 2);
+    let res = (0.0523) * this.varSelect;
 
-    this.varAll[17] = res;
+    this.varAll[13] = res;
+    this.varSelect = 0;
+  }
+  SelectP2V22(event: any) {
+    this.varSelect = event.target.value;
+    let res = (0.0337) * this.varSelect ;
+
+    this.varAll[14] = res;
+    this.varSelect = 0;
+  }
+  SelectP2V23(event: any) {
+    this.varSelect = event.target.value;
+    let res = (0.0781) * this.varSelect ;
+
+    this.varAll[15] = res;
     this.varSelect = 0;
   }
 
   SelectP2V3(event: any) {
     this.varSelect = event.target.value;
-    let res = 0.105 * this.varSelect;
+    let res = 0.128 * (this.varSelect / this.nbrFamille);
+
+    this.varAll[16] = res;
+    this.varSelect = 0;
+  }
+
+
+
+  SelectP2V4(event: any) {
+    this.varSelect = event.target.value;
+    let res = 0.344 * (this.varSelect / this.nbrFamille);
+
+    this.varAll[17] = res;
+    this.varSelect = 0;
+  }
+
+
+
+  SelectP2V5(event: any) {
+    this.varSelect = event.target.value;
+    let res = 0.301 * (this.varSelect / this.nbrFamille);
 
     this.varAll[18] = res;
     this.varSelect = 0;
   }
 
-  SelectP2V4(event: any) {
+
+
+  SelectP2V6(event: any) {
     this.varSelect = event.target.value;
-    let res = -0.0319 * this.varSelect;
+    let res = 0.0257 * this.varSelect;
 
     this.varAll[19] = res;
     this.varSelect = 0;
   }
 
-  SelectP2V5(event: any) {
+
+
+  SelectP2V7(event: any) {
     this.varSelect = event.target.value;
-    let res = -0.0557 * (this.varSelect / this.nbrFamille);
+    let res = 0.000755 * this.varSelect*12/this.nbrFamille;
 
     this.varAll[20] = res;
     this.varSelect = 0;
   }
 
-  SelectP2V6(event: any) {
+  SelectP2V8(event: any) {
     this.varSelect = event.target.value;
-    let res = 0.120 * (this.varSelect / this.nbrFamille);
+    let res = 0.000145 * this.varSelect*12/this.nbrFamille;
 
     this.varAll[21] = res;
     this.varSelect = 0;
   }
 
-  SelectP2V7(event: any) {
-    this.varSelect = event.target.value;
-    let res = 0.139 * (this.varSelect / this.nbrFamille);
-
-    this.varAll[22] = res;
-    this.varSelect = 0;
-  }
-
-  SelectP2V8(event: any) {
-    this.varSelect = event.target.value;
-    let res = 0.307 * (this.varSelect / this.nbrFamille);
-
-    this.varAll[23] = res;
-    this.varSelect = 0;
-  }
-
   SelectP2V9(event: any) {
     this.varSelect = event.target.value;
-    let res = 0.180 * (this.varSelect / this.nbrFamille);
+    let res = 0.00086 * this.varSelect*12/this.nbrFamille;
 
-    this.varAll[24] = res;
-    this.varSelect = 0;
-  }
-
-  SelectP2V10(event: any) {
-    this.varSelect = event.target.value;
-    let res = 0.0516 * this.varSelect;
-
-    this.varAll[25] = res;
-    this.varSelect = 0;
-  }
-
-  SelectP2V11(event: any) {
-    this.varSelect = event.target.value;
-    let res = 0.226 * this.varSelect;
-
-    this.varAll[26] = res;
-    this.varSelect = 0;
-  }
-
-  SelectP2V12(event: any) {
-    this.varSelect = event.target.value;
-    let res = 0.0598 * this.varSelect;
-
-    this.varAll[27] = res;
-    this.varSelect = 0;
-  }
-
-  SelectP2V13(event: any) {
-    this.varSelect = event.target.value;
-    let res = 0.000422 * this.varSelect;
-
-    this.varAll[28] = res;
-    this.varSelect = 0;
-  }
-
-  SelectP2V14(event: any) {
-    this.varSelect = event.target.value;
-    let res = 0.00011 * this.varSelect;
-
-    this.varAll[29] = res;
-    this.varSelect = 0;
-  }
-
-  SelectP2V15(event: any) {
-    this.varSelect = event.target.value;
-    let res = 0.00011 * this.varSelect;
-
-    this.varAll[30] = res;
+    this.varAll[22] = res;
     this.varSelect = 0;
   }
 
@@ -370,7 +312,7 @@ export class ZoneRuralComponent implements OnInit {
       this.kzg = 0.230;
     } else if (this.varSelect == 3) {
 
-      this.kzg = 0.230;
+      this.kzg = 0.296;
     } else if (this.varSelect == 4) {
 
       this.kzg = 0.302;
@@ -388,7 +330,7 @@ export class ZoneRuralComponent implements OnInit {
       this.kzg = 0;
     } else if (this.varSelect == 9) {
 
-      this.kzg = 0,221;
+      this.kzg = 0.221;
 
     } else if (this.varSelect == 10) {
 
