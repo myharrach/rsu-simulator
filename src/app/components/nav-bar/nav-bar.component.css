@@ -1,7 +1,7 @@
 nav{
   height: 70px;
   background-color: #2aa198;
-
+  z-index:2;
   font-weight: bold;
 }
 
