@@ -20,14 +20,16 @@
   <div class="col-md-8 mt-4 main">
 
 
-    <div *ngIf="router.url === '/'">
+    <div *ngIf="router.url === '/'" class="me-1">
 
       <p class="lead my-5 main-source"> كل المعلومات المستخدة في المماثلة مأخوذة من الملحقين رقم 1 و2 من <span style="text-decoration: underline;">الجريدة الرسمية عدد 7011</span> , من 29
         ذوالحجة 1442 (9 أغسطس 2021) صفحات 6001-6008. </p>
 
 
     </div>
-    <router-outlet ></router-outlet>
+    <div style="  margin-right: 8px;
+"> <router-outlet ></router-outlet></div>
+
 
 
   </div>
