@@ -1,13 +1,13 @@
 <h2 class="type-location"> التنقيط بالمجال القروي</h2>
 
-<form class="mt-3" >
-  <div  [style.display]="step != 1?'none':'block'">
+<form class="mt-3">
+  <div [style.display]="step != 1?'none':'block'">
 
     <div class="mb-2">
       <h5 class="variable"> صنف الأسرة</h5>
       <div>
         <label class="mb-2">اختر صنف أسرة التي تنتمي إليها</label>
-        <select class="form-select"  (change)="SelectV1OrV2($event) " required>
+        <select class="form-select" (change)="SelectV1($event) " required>
           <option value="0" selected>اختر</option>
           <option value="0.130">أسرة مكونة من فرد واحد، أومن زوجين بدون أطفال</option>
           <option value="0">أسرة مكونة من أكثر من نواة عائلية</option>
@@ -20,9 +20,11 @@
       <h5 class="variable">نوع السكن</h5>
       <div>
         <label class="mb-2">اختر نوع السكن الذي تقطن فيه</label>
-        <select class="form-select"  (change)="SelectV1OrV2($event) " required>
+        <select class="form-select" (change)="SelectV2($event) " required>
           <option value="0" selected>اختر</option>
-          <option value="0.127">.أسرة تقيم بفيلا، شقة، دار تقليدية، دار قروية مشيدة بالأحجاراليابسة، أو بالأحجار الغطاة بالطين</option>
+          <option value="0.127">أسرة تقيم بفيلا، شقة، دار تقليدية، دار قروية مشيدة بالأحجاراليابسة، أو بالأحجار المغطاة
+            بالطين
+          </option>
           <option value="0">غير الجواب الأول</option>
         </select>
       </div>
@@ -32,52 +34,29 @@
     <div class="mb-2">
       <h5 class="variable"> عدد الغرف في السكن</h5>
       <div>
-        <label class="mb-2">أتوفر على غرفة واحدة يتقاسمها </label>
-        <select class="form-select"  (change)="SelectV3Cas1($event)" required>
+        <label class="mb-2">أتوفر على سكن كل غرفة واحدة يتقاسمها </label>
+        <select class="form-select" (change)="SelectV3Cas1($event)" required>
           <option value="0" selected>اختر</option>
-          <option value="0.129">أتوفر على غرفة واحدة يتقاسمها شخصان على الأكثر</option>
-          <option value="0.108">أتوفر على غرفة واحدة يتقاسمها ثلاثة (3)
-            أشخاص على الأكثر</option>
+          <option value="1"> يتقاسمها شخصان على الأكثر</option>
+          <option value="2"> يتقاسمها ثلاثة (3)
+            أشخاص على الأكثر
+          </option>
         </select>
-      </div >
-      <div class="pt-2"  *ngIf="V3==2">
-        <label  class="form-label">كم عدد الغرف في السكن  ؟</label>
-        <input type="number" value="{{nbrV3}}" min="1" class="form-control" (change)="SelectV3Cas2($event)"  placeholder="أدخل العدد" required>
+      </div>
+      <div class="pt-2" *ngIf="V3==1 || V3==2">
+        <label class="form-label">كم عدد الغرف في السكن ؟</label>
+        <input type="number" value="{{nbrV3}}" min="1" class="form-control" (change)="SelectV3Cas2($event)"
+               placeholder="أدخل العدد" required>
       </div>
 
     </div>
 
-    <div class="mb-2">
-      <h5 class="variable"> التوفر على حمام أو رشاش</h5>
-      <div>
-        <label class="mb-2">سكن الأسرة يتوفرعلى حمام أورشاش ؟</label>
-        <select class="form-select"  (change)="SelectV4($event) " required>
-          <option value="0" selected>اختر</option>
-          <option value="0.096">نعم</option>
-          <option value="0">لا, من دون</option>
-        </select>
-      </div>
-
-    </div>
-
-    <div class="mb-2">
-      <h5 class="variable"> التوفر على عداد فردي للكهرباء</h5>
-      <div>
-        <label class="mb-2">سكن الأسرة يتوفر على عداد فردي للكهرباء ؟</label>
-        <select class="form-select" (change)="SelectV5($event) " required>
-          <option value="0" selected>اختر</option>
-          <option value="0.0466">نعم</option>
-          <option value="0">لا, من دون</option>
-        </select>
-      </div>
-
-    </div>
 
     <div class="mb-2">
       <h5 class="variable">المستوى التعليمي لرب الأسرة</h5>
       <div>
         <label class="mb-2">هل يتوفر رب الأسرة على مستوى تعليمي أساسي ؟</label>
-        <select class="form-select" (change)="SelectV6($event) " required>
+        <select class="form-select" (change)="SelectV4($event) " required>
           <option value="0" selected>اختر</option>
           <option value="0.0569">نعم</option>
           <option value="0">لا</option>
@@ -91,7 +70,7 @@
 
       <div>
         <label class="mb-2">ما هي الفئة الإجتماعية والمهنية لرب الأسرة ؟</label>
-        <select class="form-select" (change)="SelectV7($event) " required>
+        <select class="form-select" (change)="SelectV5($event) " required>
           <option value="0" selected>اختر</option>
           <option value="0.154">رب الأسرة إطار عالي أو يشغل منصب مسؤولية</option>
           <option value="0.196">.رب الأسرة مسير للمعدات أو الآلات الثابتة</option>
@@ -106,64 +85,38 @@
       <h5 class="variable">الوضعية في المهنة</h5>
       <div>
         <label class="mb-2"> رب الأسرة مشغل ؟</label>
+        <select class="form-select" (change)="SelectV6($event) " required>
+          <option value="0" selected>اختر</option>
+          <option value="0.190">نعم</option>
+          <option value="0">لا</option>
+        </select>
+      </div>
+
+    </div>
+
+
+    <div class="mb-2">
+      <h5 class="variable">التوفر على سيارة</h5>
+
+      <div>
+        <label class="mb-2">هل تتوفر الأسرة على سيارة ؟ </label>
+        <select class="form-select" (change)="SelectV7($event) " required>
+          <option value="0" selected>اختر</option>
+          <option value="0.187">نعم</option>
+          <option value="0">لا</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="mb-2">
+      <h5 class="variable">التوفر على دراجة نارية</h5>
+
+      <div>
+        <label class="mb-2">هل تتوفر الأسرة على دراجة نارية ؟ </label>
         <select class="form-select" (change)="SelectV8($event) " required>
           <option value="0" selected>اختر</option>
-          <option value="0.182">نعم</option>
-          <option value="0">لا</option>
-        </select>
-      </div>
-
-    </div>
-
-    <div class="mb-2">
-      <h5 class="variable">نوعية نشاط رب الأسرة</h5>
-      <div>
-        <label class="mb-2">هل رب الأسرة متقاعد أو يستفيد من إيراد ؟ </label>
-        <select class="form-select" (change)="SelectV9($event) " required>
-          <option value="0" selected>اختر</option>
-          <option value="0.0605">نعم</option>
-          <option value="0">لا</option>
-        </select>
-      </div>
-
-    </div>
-
-    <div class="mb-2">
-      <h5 class="variable">التوفر على حاسوب</h5>
-
-      <div>
-        <label class="mb-2">هل تتوفر الأسرة على حاسوب أو أكثر ؟ </label>
-        <select class="form-select" (change)="SelectV10($event) " required>
-          <option value="0" selected>اختر</option>
-          <option value="0.138">نعم</option>
-          <option value="0">لا</option>
-        </select>
-      </div>
-
-    </div>
-
-    <div class="mb-2">
-      <h5 class="variable">التوفر على لاقط هوائي</h5>
-
-      <div>
-        <label class="mb-2">هل تتوفر الأسرة على لاقط هوائي ؟ </label>
-        <select class="form-select" (change)="SelectV11($event) " required>
-          <option value="0" selected>اختر</option>
-          <option value="0.0873">نعم</option>
-          <option value="0">لا</option>
-        </select>
-      </div>
-
-    </div>
-
-    <div class="mb-2">
-      <h5 class="variable">التوفر على هاتف ثابت</h5>
-
-      <div>
-        <label class="mb-2">هل تتوفر الأسرة على هاتف ثابت ؟ </label>
-        <select class="form-select" (change)="SelectV12($event) " required>
-          <option value="0" selected>اختر</option>
-          <option value="0.0532">نعم</option>
+          <option value="0.0635">نعم</option>
           <option value="0">لا</option>
         </select>
       </div>
@@ -176,35 +129,37 @@
       <div>
         <label class="mb-2">هل يستفيد فرد واحد من الأسرة على أقل من نظام للتغطية الصحية غير نظام التغطية الصحية
           المساعدة الطبية (راميد) ؟ </label>
-        <select class="form-select" (change)="SelectV13($event) " required>
+        <select class="form-select" (change)="SelectV9($event) " required>
           <option value="0" selected>اختر</option>
-          <option value="0.151">نعم</option>
+          <option value="0.193">نعم</option>
           <option value="0">لا</option>
         </select>
       </div>
 
     </div>
 
-    <div class="mb-2">
-      <h5 class="variable">الولوج إلى القرض</h5>
-      <div>
-        <label class="mb-2">هل تستفيد الأسرة من قرض لدى إحدى الأبناك أو المؤسسات المالية أو المشغل ؟ </label>
-        <select class="form-select" (change)="SelectV14($event) " required>
-          <option value="0" selected>اختر</option>
-          <option value="0.135">نعم</option>
-          <option value="0">لا</option>
-        </select>
-      </div>
-
-    </div>
 
     <div class="mb-2">
       <h5 class="variable">سكن ثانوي</h5>
       <div>
         <label class="mb-2">هل تتوفرالأسرة على سكن ثانوي ؟ </label>
-        <select class="form-select" (change)="SelectV15($event) " required>
+        <select class="form-select" (change)="SelectV10($event) " required>
           <option value="0" selected>اختر</option>
-          <option value="0.173">نعم</option>
+          <option value="0.334">نعم</option>
+          <option value="0">لا</option>
+        </select>
+      </div>
+
+    </div>
+
+
+    <div class="mb-2">
+      <h5 class="variable">أراض غير فلاحية</h5>
+      <div>
+        <label class="mb-2">هل تتوفر الأسرة على أراض غير فلاحية ؟ </label>
+        <select class="form-select" (change)="SelectV11($event) " required>
+          <option value="0" selected>اختر</option>
+          <option value="0.233">نعم</option>
           <option value="0">لا</option>
         </select>
       </div>
@@ -212,30 +167,18 @@
     </div>
 
     <div class="mb-2">
-      <h5 class="variable">التوفر على مرآب</h5>
+      <h5 class="variable">أراض مسقية</h5>
       <div>
-        <label class="mb-2">هل تتوفر الأسرة على مرآب ؟ </label>
+        <label class="mb-2">هل تتوفر الأسرة على أراض مسقية أو تستغلها ؟ </label>
         <select class="form-select" (change)="SelectV12($event) " required>
           <option value="0" selected>اختر</option>
-          <option value="0.117">نعم</option>
+          <option value="0.126">نعم</option>
           <option value="0">لا</option>
         </select>
       </div>
 
     </div>
 
-    <div class="mb-2">
-      <h5 class="variable">التوفر على محلات مهنية</h5>
-      <div>
-        <label class="mb-2">هل تتوفر الأسرة على محلات مهنية ؟ </label>
-        <select class="form-select" (change)="SelectV16($event) " required>
-          <option value="0" selected>اختر</option>
-          <option value="0.111">نعم</option>
-          <option value="0">لا</option>
-        </select>
-      </div>
-
-    </div>
 
   </div>
 
@@ -244,48 +187,57 @@
     <div class="mb-2">
       <h5 class="variable"> عدد أفراد الأسرة</h5>
       <div>
-        <label  class="form-label"> كم عدد أفراد الأسرة ؟</label>
-        <input type="number"  min="1" class="form-control" (change)="SelectP2V1($event)" placeholder="أدخل العدد" required>
+        <label class="form-label"> كم عدد أفراد الأسرة ؟</label>
+        <input type="number" min="1" class="form-control" (change)="SelectP2V1($event)" placeholder="أدخل العدد"
+               required>
       </div>
 
     </div>
 
     <div class="mb-2">
-      <h5 class="variable">سن رب الأسرة</h5>
+      <h5 class="variable">سن أفراد الأسرة</h5>
       <div>
-        <label class="form-label">ماهو سن رب الأسرة ؟</label>
-        <input type="number" min="18" class="form-control" (change)="SelectP2V2($event)" placeholder="أدخل السن" required>
+        <div class="pt-2">
+          <label class="form-label">ماهو عدد أفراد الأسرة الذين تتراوح أعمارهم ما بين 19 و29 سنة ؟</label>
+          <input type="number" min="18" class="form-control" (change)="SelectP2V21($event)" placeholder="أدخل العدد"
+                 required>
+        </div>
+        <div class="pt-2">
+          <label class="form-label">ماهو عدد أفراد الأسرة الذين تتراوح أعمارهم ما بين 30 و59 سنة ؟</label>
+          <input type="number" min="18" class="form-control" (change)="SelectP2V22($event)" placeholder="أدخل العدد"
+                 required>
+        </div>
+        <div class="pt-2">
+          <label class="form-label">ماهو عدد أفراد الأسرة الذين تبلغ أعمارهم 60 سنة فأكثر ؟</label>
+          <input type="number" min="18" class="form-control" (change)="SelectP2V23($event)" placeholder="أدخل العدد"
+                 required>
+        </div>
       </div>
 
     </div>
 
     <div class="mb-2">
-      <h5 class="variable">التمدرس</h5>
+      <h5 class="variable">معرفة القراءة والكتابة</h5>
       <div>
-        <label class="form-label">ماهو عدد الأطفال المتمدرسين في القطاع الخاص الذين تتراوح أعمارهم ما بين 6 و 14 سنة
-          ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V3($event)" value="0" placeholder="أدخل العدد" required>
+        <label class="form-label">ماهو عدد أفراد الأسرة الذين تبلغ أعمارهم 15 سنة فأكثر الذين يستطيعون القراءة
+          والكتابة
+          ؟ </label>
+        <input type="number" min="0" class="form-control" (change)="SelectP2V3($event)" value="0"
+               placeholder="أدخل العدد" required>
       </div>
-      <div class="pt-2">
-        <label class="form-label">ماهو عدد الأطفال المتمدرسين في القطاع العمومي الذين تتراوح أعمارهم ما بين 6 و 14
-          سنة ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V4($event)" value="0" placeholder="أدخل العدد" required>
-      </div>
+
 
     </div>
 
     <div class="mb-2">
       <h5 class="variable">أعلى شهادة محصل عليها</h5>
       <div>
-        <label class="form-label">ماهو عدد أفراد الأسرة الذين تتراوح أعمارهم 15 سنة فأكثر والذين لا يتوفرون على أي شهادة
+        <label class="form-label"> ماهو عدد أفراد الأسرة الذين تتراوح أعمارهم 15 سنة فأكثر الحاصلين على شهادة التعليم العالي
           ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V5($event)" value="0" placeholder="أدخل العدد" required>
+        <input type="number" min="0" class="form-control" (change)="SelectP2V4($event)" value="0"
+               placeholder="أدخل العدد" required>
       </div>
-      <div class="pt-2">
-        <label class="form-label">ماهو عدد أفراد الأسرة الذين تتراوح أعمارهم 15 سنة فأكثر الحاصلين على شهادة أو دبلوم تقني
-          ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V6($event)" value="0" placeholder="أدخل العدد" required>
-      </div>
+
 
     </div>
 
@@ -293,56 +245,34 @@
     <div class="mb-2">
       <h5 class="variable">الفئة الإجتماعية والمهنية</h5>
       <div>
-        <label class="form-label">ماهو عدد أفراد الأسرة الذين تتراوح أعمارهم 15 سنة فأكثر الذين يزاولون نشاطا مدرا
-          للدخل
+        <label class="form-label">ماهو عدد أفراد الأسرة الذين تتراوح أعمارهم 15 سنة فأكثر الذين يزاولون يزاولون التجارة
           ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V7($event)" value="0" placeholder="أدخل العدد" required>
-      </div>
-      <div class="pt-2">
-        <label class="form-label">ماهو عدد أفراد الأسرة الذين تتراوح أعمارهم 15 سنة فأكثر الذين يزاولون نشاط تسيير للمعدات
-          ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V8($event)" value="0" placeholder="أدخل العدد" required>
-      </div>
-      <div class="pt-2">
-        <label class="form-label">ماهو عدد أفراد الأسرة الذين يشتغلون كأطر عليا أو يشغلون منصب مسؤولية
-          ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V9($event)" value="0" placeholder="أدخل العدد" required>
+        <input type="number" min="0" class="form-control" (change)="SelectP2V5($event)" value="0"
+               placeholder="أدخل العدد" required>
       </div>
 
     </div>
 
     <div class="mb-2">
-      <h5 class="variable"> عدد الهواتف الحمولة</h5>
+      <h5 class="variable"> عدد البقار اللۘي تمتلكها الأسرة</h5>
       <div>
-        <label  class="form-label">كم عدد الهواتف الحمولة داخل  الأسرة ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V10($event)" value="0" placeholder="أدخل العدد" required>
+        <label class="form-label">كم عدد البقار اللۘي تمتلكها الأسرة ؟</label>
+        <input type="number" min="0" class="form-control" (change)="SelectP2V6($event)" value="0"
+               placeholder="أدخل العدد" required>
       </div>
 
     </div>
 
-    <div class="mb-2">
-      <h5 class="variable"> عدد السيارات</h5>
-      <div>
-        <label  class="form-label">كم عدد السيارات في حوزة الأسرة ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V11($event)" value="0" placeholder="أدخل العدد" required>
-      </div>
 
-    </div>
 
-    <div class="mb-2">
-      <h5 class="variable"> عدد الدراجات النارية</h5>
-      <div>
-        <label class="form-label">كم عدد الدراجات النارية في حوزة الأسرة ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V12($event)" value="0" placeholder="أدخل العدد" required>
-      </div>
 
-    </div>
 
     <div class="mb-2">
       <h5 class="variable"> مصاريف الأسرة السنوية المتعلقة باستهلاك غاز البوتان</h5>
       <div>
-        <label class="form-label">ماهو مبلغ مصاريف الأسرة السنوية المتعلقة باستهلاك غازالبوتان ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V13($event)"  value="0" placeholder="أدخل العدد" required>
+        <label class="form-label">ماهو متوسط مبلغ مصاريف الأسرة الشهرية المتعلقة باستهلاك غازالبوتان ؟</label>
+        <input type="number" min="0" class="form-control" (change)="SelectP2V7($event)" value="0"
+               placeholder="أدخل العدد" required>
       </div>
 
     </div>
@@ -350,8 +280,9 @@
     <div class="mb-2">
       <h5 class="variable"> مصاريف الأسرة السنوية المتعلقة باستهلاك الماء والكهرباء</h5>
       <div>
-        <label  class="form-label">ماهو مبلغ مصاريف الأسرة السنوية المتعلقة باستهلاك الماء والكهرباء ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V14($event)" value="0" placeholder="أدخل العدد" required>
+        <label class="form-label">ماهو متوسط مبلغ مصاريف الأسرة الشهرية المتعلقة باستهلاك الماء والكهرباء ؟</label>
+        <input type="number" min="0" class="form-control" (change)="SelectP2V8($event)" value="0"
+               placeholder="أدخل العدد" required>
       </div>
 
     </div>
@@ -359,8 +290,9 @@
     <div class="mb-2">
       <h5 class="variable"> مصاريف الأسرة السنوية المتعلقة باستهلاك الهاتف و الأׁنترنت</h5>
       <div>
-        <label  class="form-label">ماهو مبلغ مصاريف الأسرة السنوية المتعلقة باستهلاك الهاتف و الأׁنترنت ؟</label>
-        <input type="number" min="0" class="form-control" (change)="SelectP2V15($event)"  value="0" placeholder="أدخل العدد" required>
+        <label class="form-label">ماهو متوسط مبلغ مصاريف الأسرة الشهرية المتعلقة باستهلاك الهاتف و الأׁنترنت ؟</label>
+        <input type="number" min="0" class="form-control" (change)="SelectP2V9($event)" value="0"
+               placeholder="أدخل العدد" required>
       </div>
 
     </div>
@@ -374,7 +306,7 @@
       <h5 class="variable"> الجهة</h5>
       <div>
         <label class="mb-2">اختر الجهة التي تنتمي إليها المدينة التي تقطن بها</label>
-        <select class="form-select" (change)="SelectP3V1($event)"  required>
+        <select class="form-select" (change)="SelectP3V1($event)" required>
           <option value="0" selected>اختر</option>
           <option *ngFor="let r of regionMaroc" value="{{r.id}}">{{r.region }}</option>
         </select>
@@ -399,17 +331,18 @@
 
   </div>
   <div class="d-flex justify-content-center flex-nowrap mb-2 mt-3">
-    <button type="button" class="btn  mx-2 btn-calcul btn-lg" (click)="OnSubmit()" style="font-weight: bold;" *ngIf="step == 3">حساب
+    <button type="button" class="btn  mx-2 btn-calcul btn-lg" (click)="OnSubmit()" style="font-weight: bold;"
+            *ngIf="step == 3">حساب
     </button>
   </div>
 
   <div class="mb-2" *ngIf=" score!=0" [style.display]="step != 3?'none':'block'">
     <h4 class="resulat">المعدل</h4>
 
-    <div >
-      <h2  class="form-label pt-2" style="text-align: center;direction: ltr;" >{{score.toFixed(7) }}</h2>
-      <h5  class="included" *ngIf="score <=minScore ">أنتم من المستفيدين من برنامج الدعم الإجتماعي</h5>
-      <h5  class="notIncluded" *ngIf="score >minScore ">أنتم غير مستفيدون من برنامج الدعم الإجتماعي</h5>
+    <div>
+      <h2 class="form-label pt-2" style="text-align: center;direction: ltr;">{{score.toFixed(7) }}</h2>
+      <h5 class="included" *ngIf="score <=minScore ">أنتم من المستفيدين من برنامج الدعم الإجتماعي</h5>
+      <h5 class="notIncluded" *ngIf="score >minScore ">أنتم غير مستفيدون من برنامج الدعم الإجتماعي</h5>
     </div>
 
   </div>
