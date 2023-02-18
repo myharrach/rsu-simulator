@@ -4,3 +4,8 @@ nav{
 
   font-weight: bold;
 }
+
+.navbar-collapse {
+  background: #2aa198;
+  z-index: 1;
+}
